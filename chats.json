@@ -1,0 +1,104 @@
+[
+    {
+        "id": 1,
+        "members": [1,2],
+        "messages": [
+            {
+                "id": 1,
+                "timestamp": 1682094012652,
+                "user_id": 1,
+                "text": "hello"
+            }, 
+            {
+                "id": 2,
+                "timestamp": 1682094012652,
+                "user_id": 2,
+                "text": "Hi."
+            }, 
+            {
+                "id": 3,
+                "timestamp": 1682094012652,
+                "user_id": 2,
+                "text": "How are you?"
+            }, 
+            {
+                "id": 4,
+                "timestamp": 1682094012652,
+                "user_id": 1,
+                "text": "I'm fine and you?"
+            }, 
+            {
+                "id": 5,
+                "timestamp": 1682094012652,
+                "user_id": 2,
+                "text": "I'm fine too.\n let me tell your a story from my work..."
+            }, 
+            {
+                "id": 6,
+                "timestamp": 1682094012652,
+                "user_id": 1,
+                "text": "bye"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "members": [5,6],
+        "messages": [
+            {
+                "id": 1,
+                "timestamp": 1682094012652,
+                "user_id": 5,
+                "text": "Hello"
+            }, 
+            {
+                "id": 2,
+                "timestamp": 1682094012652,
+                "user_id": 6,
+                "text": "Hi."
+            }, 
+            {
+                "id": 3,
+                "timestamp": 1682094012652,
+                "user_id": 5,
+                "text": "How is your wife?"
+            }, 
+            {
+                "id": 4,
+                "timestamp": 1682094012652,
+                "user_id": 6,
+                "text": "She is fine. Thank you!"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "members": [1,4],
+        "messages": [
+            {
+                "id": 1,
+                "timestamp": 1682094012652,
+                "user_id": 1,
+                "text": "Hello"
+            }, 
+            {
+                "id": 2,
+                "timestamp": 1682094012652,
+                "user_id": 4,
+                "text": "Hi."
+            }, 
+            {
+                "id": 3,
+                "timestamp": 1682094012652,
+                "user_id": 4,
+                "text": "How your wife?"
+            }, 
+            {
+                "id": 4,
+                "timestamp": 1682094012652,
+                "user_id": 1,
+                "text": "She is fine. Thank you!"
+            }
+        ]
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "username": "JohnSina",
+        "email": "sina@gmail.com",
+        "password": "Js007007",
+        "cookie": "85e8d160e6fcbdd25b9a3691377ae26d"
+    },
+    {
+        "id": 2,
+        "username": "Billy",
+        "email": "billy007@gmail.com",
+        "password": "Billy007007",
+        "cookie": null
+    },
+    {
+        "id": 3,
+        "login": "qwer123",
+        "email": "qwer123@gmail.com",
+        "password": "Qw123123",
+        "cookie": null
+    },
+    {
+        "id": 4,
+        "login": "user007",
+        "email": "user007@gmail.com",
+        "password": "User007",
+        "cookie": null
+    },
+    {
+        "id": 5,
+        "login": "user2",
+        "email": "user2@gmail.com",
+        "password": "User2",
+        "cookie": null
+    },
+    {
+        "id": 6,
+        "login": "user3",
+        "email": "user3@gmail.com",
+        "password": "User3",
+        "cookie": null
+    },
+    {
+        "id": 7,
+        "login": "Js007",
+        "email": "psina@gmail.com",
+        "password": "Js007007",
+        "cookie": "c3f7d7b76a181989464e1a5fe0ff47b1"
+    },
+    {
+        "id": 8,
+        "username": "",
+        "email": "waketfusamurai@gmail.com",
+        "password": "12345678",
+        "cookie": null
+    }
+]

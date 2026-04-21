@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="signup-form">
+        <input type="text" placeholder="username" class="login">
+        <input type="text" placeholder="email" class="email">
+        <input type="text" placeholder="password" class="password">
+        <button class="signup-btn">Sign up</button>
+        <a href="/login.html">Log in</a>
+        <div class="error-container"></div>
+    </div>
+    <script>
+        const loginInput = document.querySelector('.login')
+        const emailInput = document.querySelector('.email')
+        const passwordInput = document.querySelector('.password')
+        const signupBtn = document.querySelector('.signup-btn')
+        const errorContainer = document.querySelector('.error-container')
+        
+        signupBtn.onclick = async function () {
+            const user = {
+                username: loginInput.value,
+                email: emailInput.value,
+                password: passwordInput.value
+            }
+            console.log(user)
+            loginInput.value = ''
+            emailInput.value = ''
+            passwordInput.value = ''
+            const res = await fetch('/signup', {
+                method: 'POST', 
+                body: JSON.stringify(user)
+            })
+            const resObj = await res.json()
+            console.log(resObj)
+            if (resObj.success){
+                location.href = '/index.html'
+            } else {
+                errorContainer.textContent = resObj.msg
+            }
+        }
+    </script>
+</body>
+</html>

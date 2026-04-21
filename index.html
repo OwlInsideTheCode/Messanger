@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .menu > .active{
+            background-color: azure;
+        }
+        .container > div{
+            display: none;
+        }
+        .container > div.active{
+            display: initial;
+        }
+        .settings input{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="user-info">
+        <div class="name"></div>
+        <div class="email"></div>
+    </div>  
+    <button class="logout-btn">Log out</button>
+    <div class="menu">
+        <div class="my-chats active">My chats</div>
+        <div class="new-chat">New chat</div>
+        <div class="settings">Settings</div>
+    </div>
+    <div class="container">
+        <div class="my-chats active">my chats</div>
+        <div class="new-chat">
+            <input type="text" placeholder="User name">
+            <button>Start chat</button>
+        </div>
+        <div class="chat-details">chat details</div>
+        <div class="settings">
+            <button class="change-username">Change user name</button>
+            <button class="change-email">Change email</button>
+            <button class="change-password">Change password</button>
+            <div>
+                <input type="text" placeholder="User name" autocomplete="off" class="username hidden">
+                <input type="text" placeholder="Email" autocomplete="off" class="email hidden">
+                <input type="text" placeholder="Password" autocomplete="off" class="password hidden">
+                <input type="text" placeholder="Repeat password" autocomplete="off" class="repeat-password hidden">
+                <div>
+                    <button class="ok-btn hidden">Ok</button>
+                    <button class="cancel-btn hidden">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

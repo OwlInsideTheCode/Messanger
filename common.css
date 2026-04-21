@@ -1,0 +1,9 @@
+button{
+    background-color: aqua;
+}
+.signup-form > *, .login-form > * {
+    display: block;
+}
+.hidden{
+    display:none !important;
+}
