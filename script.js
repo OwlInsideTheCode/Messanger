@@ -16,6 +16,9 @@ const passwordInput = container.querySelector('.password')
 const repeatPasswordInput = container.querySelector('.repeat-password')
 const okBtn = container.querySelector('.ok-btn')
 const cancelBtn = container.querySelector('.cancel-btn')
+const newChatInput = newChatContainer.querySelector('input')
+const startChatBtn = newChatContainer.querySelector('button')
+
 
 
 
@@ -58,6 +61,7 @@ changeUsernameBtn.onclick = function (event) {
     okBtn.classList.remove('hidden')
     cancelBtn.classList.remove('hidden')
 }
+    
 changeEmailBtn.onclick = function (event) {
     event.target.disabled = true
     changeUsernameBtn.classList.add('hidden')
@@ -91,23 +95,71 @@ function switchVisability() {
 }
 okBtn.onclick = async function () {
     const mode = settingsContainer.querySelector('[disabled]').className
-    console.log(mode)
-    if (mode === 'change-username') {
-        const response = await fetch('change-username', {
-            method: 'POST', 
-            body: ''
-        })
-        if (response.ok) {
-            const result = await response.json()
-            console.log(result)
-        }
-    } else if (mode === 'change email') {
 
-    } else {
+    if (mode === 'change-username') {
+        await fetch('change-username', {
+            method: 'POST', 
+            body: usernameInput.value
+        })
+
+        const user = JSON.parse(localStorage.getItem('user'))
+        user.username = usernameInput.value
+        localStorage.setItem('user', JSON.stringify(user))
+        usernameContainer.textContent = user.username
+
+    } else if (mode === 'change-email') {
+        await fetch ('change-email', {
+            method: 'POST', 
+            body: emailInput.value
+        })
+
+        const user = JSON.parse(localStorage.getItem('user'))
+        user.email = emailInput.value
+        localStorage.setItem('user', JSON.stringify(user))
+        emailContainer.textContent = user.email
+
+    } else if (mode === 'change-password') {
+
+        if (passwordInput.value !== repeatPasswordInput.value) {
+            console.log('Passwords do not match')
+            return
+        }
+        await fetch ('change-password', {
+            method: 'POST',
+            body: passwordInput.value
+        })
+    
 
     }
     switchVisability()
 }
+
+startChatBtn.onclick = async function () {
+    const username = newChatInput.value.trim()
+
+    if (username === '') {
+        return
+    }
+
+    const response = await fetch('start-chat', {
+        method: 'POST',
+        body: JSON.stringify({
+            username: username
+        })
+    })
+
+    const result = await response.json()
+
+    if (result.success) {
+        newChatInput.value = ''
+        await loadChats()
+        openChat(result.chat)
+    } else {
+        console.log(result.msg)
+    }
+}
+
+
 cancelBtn.onclick = function () {
     switchVisability()
 }
@@ -162,7 +214,42 @@ function openChat(chat) {
 
     const messageInput = document.createElement('input')
     messageInput.type = 'text'
-    messageInput.placeholder = "Type a message"
+    messageInput.placeholder = 'Type a message'
 
-    const SendBtn = document.createElement()
+    const sendBtn = document.createElement('button')
+    sendBtn.textContent = 'Send'
+
+    sendBtn.onclick = async function () {
+        const text = messageInput.value
+
+        if (text === '') {
+            return
+        }
+
+        const response = await fetch('send-message', {
+            method: 'POST',
+            body: JSON.stringify({
+                chatId: chat.id,
+                text: text
+            })
+        })
+
+        const result = await response.json()
+
+        if (result.success) {
+            chat.messages.push(result.message)
+
+            const messageElement = document.createElement('div')
+            messageElement.className = 'message'
+            messageElement.textContent = result.message.text
+
+            chatDetailsContainer.insertBefore(messageElement, messageInput)
+            messageInput.value = ''
+        } else {
+            console.log(result.msg)
+        }
+    }
+
+    chatDetailsContainer.append(messageInput)
+    chatDetailsContainer.append(sendBtn)
 }
