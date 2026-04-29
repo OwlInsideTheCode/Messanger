@@ -35,7 +35,7 @@ const server = http.createServer(function (req, res) {
                 const userObj = JSON.parse(data)
                 const usersArr = JSON.parse(users)
                 for (const user of usersArr) {
-                    if (user.email === userObj.email && user.password === userObj.password) {
+                    if (user.email === userObj.email && user.password === hashPassword(userObj.password)) {
                         proccessMyChats(user.id, usersArr, function (chats) {
                             user.cookie = createCookie(userObj)
                             fs.writeFile('users.json', JSON.stringify(usersArr, null, 4), function () {
@@ -85,18 +85,27 @@ const server = http.createServer(function (req, res) {
                         return
                     }
                 }
+                userObj.password = hashPassword(userObj.password)
                 userObj.cookie = createCookie(userObj)
-                usersArr.push({
+                const newUser = {
                     id: usersArr.length + 1,
                     ...userObj,
-                })
+                }
+                usersArr.push(newUser)
+
                 fs.writeFile('users.json', JSON.stringify(usersArr, null, 4), function () {
                     res.writeHead(200, {
                     'Content-Type': 'application/json',
                     'Set-Cookie': `cookie=${userObj.cookie}; Path=/`
                 });
                     res.end(JSON.stringify({
-                        success: true
+                        success: true,
+                        user: {
+                            id: newUser.id,
+                            email: newUser.email,
+                            username: newUser.username
+                        },
+                        chats: []
                     }));
                 })
             })
@@ -290,7 +299,7 @@ const server = http.createServer(function (req, res) {
                 })
 
                 req.on('end', function () {
-                    currentUser.password = data
+                    currentUser.password = hashPassword(data)
 
                     fs.writeFile('users.json', JSON.stringify(users, null, 4), function () {
                         res.writeHead(200, { 'Content-Type': 'application/json' })
@@ -347,6 +356,11 @@ function createCookie(user) {
     hash.update(str)
     return hash.digest('hex').substring(0, 32)
 }
+
+function hashPassword(password) {
+    return createHash('sha256').update(password).digest('hex')
+}
+
 
 function proccessMyChats(currentUserId, users, cb) {
     fs.readFile('chats.json', function (err, contents) {

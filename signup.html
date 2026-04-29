@@ -40,6 +40,8 @@
             const resObj = await res.json()
             console.log(resObj)
             if (resObj.success){
+                localStorage.setItem('user', JSON.stringify(resObj.user))
+                localStorage.setItem('chats', JSON.stringify(resObj.chats))
                 location.href = '/index.html'
             } else {
                 errorContainer.textContent = resObj.msg

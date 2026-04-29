@@ -3,56 +3,84 @@
         "id": 1,
         "username": "JohnSina",
         "email": "sina@gmail.com",
-        "password": "Js007007",
+        "password": "8e54fedd5726658a81a5e362eb3eeb47119278d67fa600bff1cd214225f2641a",
         "cookie": "8ab08b219401d68719df7e4176cd5e54"
     },
     {
         "id": 2,
         "username": "Silly",
         "email": "silly007@gmail.com",
-        "password": "Billy007007",
+        "password": "042c00ac9212ecae8ab7543cc9bb7da95e09ab9b0342a13beed7ad69d5ea5837",
         "cookie": "b31f138eafc8e85b17e45048202946d5"
     },
     {
         "id": 3,
         "username": "qwer123",
         "email": "qwer123@gmail.com",
-        "password": "Qw123123",
+        "password": "4a7e94df2be8b1d8caa629fbf9a9c79be280c2d5a4fed5754551fe8af7453165",
         "cookie": null
     },
     {
         "id": 4,
         "username": "user007",
         "email": "user007@gmail.com",
-        "password": "User007",
+        "password": "fca2c961fbbef12942894e741229b118415ce2287b9f7b2f939ac434df2d6c4d",
         "cookie": null
     },
     {
         "id": 5,
         "username": "user2",
         "email": "user2@gmail.com",
-        "password": "User2",
+        "password": "0e238ae88aef5a81ba9d297b5df67e74af15d168e5b765db22227c91b8672285",
         "cookie": null
     },
     {
         "id": 6,
         "username": "user3",
         "email": "user3@gmail.com",
-        "password": "User3",
+        "password": "59c9fa1f56577193d7ebccfe34793a521c5b3b5ebc01f7075ebc90546ef3c6be",
         "cookie": null
     },
     {
         "id": 7,
         "username": "Js007",
         "email": "psina@gmail.com",
-        "password": "Js007007",
+        "password": "8e54fedd5726658a81a5e362eb3eeb47119278d67fa600bff1cd214225f2641a",
         "cookie": "c3f7d7b76a181989464e1a5fe0ff47b1"
     },
     {
         "id": 8,
         "username": "SomeUser",
         "email": "waketfusamurai@gmail.com",
-        "password": "123",
-        "cookie": "8cda10c7d487ecccee4c5fbf6e9c0e70"
+        "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+        "cookie": null
+    },
+    {
+        "id": 9,
+        "username": "NewUser",
+        "email": "newuser@gmail.com",
+        "password": "26821fdb266d260c4548a7b1044627ac9ae1b5d53d8de7329c6b3d3634d45d0f",
+        "cookie": null
+    },
+    {
+        "id": 10,
+        "username": "Cory",
+        "email": "cory@gmail.com",
+        "password": "b4af96871e4d2e80ccf054e8992ceee4f0d8563f92442a7d971e7d23409cbff2",
+        "cookie": null
+    },
+    {
+        "id": 11,
+        "username": "test123",
+        "email": "test@gmail.com",
+        "password": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+        "cookie": null
+    },
+    {
+        "id": 12,
+        "username": "test2",
+        "email": "test2@gmail.com",
+        "password": "e80b0c67e6fd0ccbeb50d914157ebc606ca470bb57f1ec704fe261091b2ac6cc",
+        "cookie": "d8c3815d998540786f44a489ed3c97ea"
     }
 ]
