@@ -18,6 +18,9 @@ const okBtn = container.querySelector('.ok-btn')
 const cancelBtn = container.querySelector('.cancel-btn')
 const newChatInput = newChatContainer.querySelector('input')
 const startChatBtn = newChatContainer.querySelector('button')
+const settingsError = settingsContainer.querySelector('.settings-error')
+const newChatError = newChatContainer.querySelector('.new-chat-error')
+
 
 
 
@@ -80,6 +83,7 @@ changePasswordBtn.onclick = function (event) {
     cancelBtn.classList.remove('hidden')
 }
 function switchVisability() {
+    settingsError.textContent = ''
     usernameInput.classList.add('hidden')
     emailInput.classList.add('hidden')
     passwordInput.classList.add('hidden')
@@ -97,6 +101,10 @@ okBtn.onclick = async function () {
     const mode = settingsContainer.querySelector('[disabled]').className
 
     if (mode === 'change-username') {
+         if (usernameInput.value.trim() === '') {
+            settingsError.textContent = 'Enter username'
+            return
+        }
         await fetch('change-username', {
             method: 'POST', 
             body: usernameInput.value
@@ -108,6 +116,10 @@ okBtn.onclick = async function () {
         usernameContainer.textContent = user.username
 
     } else if (mode === 'change-email') {
+        if (emailInput.value.trim() === '') {
+            settingsError.textContent = 'Enter email'
+            return
+        }
         await fetch ('change-email', {
             method: 'POST', 
             body: emailInput.value
@@ -119,9 +131,12 @@ okBtn.onclick = async function () {
         emailContainer.textContent = user.email
 
     } else if (mode === 'change-password') {
-
+        if (passwordInput.value.trim() === '') {
+            settingsError.textContent = 'Enter password'
+            return
+        }
         if (passwordInput.value !== repeatPasswordInput.value) {
-            console.log('Passwords do not match')
+            settingsError.textContent = 'Passwords do not match'
             return
         }
         await fetch ('change-password', {
@@ -138,8 +153,11 @@ startChatBtn.onclick = async function () {
     const username = newChatInput.value.trim()
 
     if (username === '') {
+        newChatError.textContent = 'Enter username'
         return
     }
+
+    newChatError.textContent = ''
 
     const response = await fetch('start-chat', {
         method: 'POST',
@@ -152,11 +170,13 @@ startChatBtn.onclick = async function () {
 
     if (result.success) {
         newChatInput.value = ''
+        newChatError.textContent = ''
         await loadChats()
         openChat(result.chat)
     } else {
-        console.log(result.msg)
+        newChatError.textContent = result.msg
     }
+
 }
 
 
@@ -222,9 +242,11 @@ function openChat(chat) {
     sendBtn.onclick = async function () {
         const text = messageInput.value
 
-        if (text === '') {
+        if (text.trim() === '') {
             return
         }
+
+
 
         const response = await fetch('send-message', {
             method: 'POST',
